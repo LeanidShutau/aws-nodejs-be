@@ -4,20 +4,27 @@ import 'source-map-support/register';
 import { findById } from './imitateDB';
 
 export const get: APIGatewayProxyHandler = async (event, _context) => {
-  const { productId } = event.pathParameters || {};
-  const product = await findById(productId);
-  if (!product) {
+  try {
+    const { productId } = event.pathParameters || {};
+    const product = await findById(productId);
+    if (!product) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({
+          message: "Not Found",
+        }, null, 2),
+      };
+    }
     return {
-      statusCode: 404,
+      statusCode: 200,
       body: JSON.stringify({
-        message: "Not Found",
+        product,
       }, null, 2),
     };
+  } catch (err) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify(err, null, 2),
+    };
   }
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      product: product,
-    }, null, 2),
-  };
 }
