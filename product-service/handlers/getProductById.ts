@@ -4,6 +4,12 @@ import 'source-map-support/register';
 import { findById } from './imitateDB';
 
 export const get: APIGatewayProxyHandler = async (event, _context) => {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PATCH, PUT',
+  }
   try {
     const { productId } = event.pathParameters || {};
     const product = await findById(productId);
@@ -13,6 +19,7 @@ export const get: APIGatewayProxyHandler = async (event, _context) => {
         body: JSON.stringify({
           message: "Not Found",
         }, null, 2),
+        headers,
       };
     }
     return {
@@ -20,11 +27,13 @@ export const get: APIGatewayProxyHandler = async (event, _context) => {
       body: JSON.stringify({
         product,
       }, null, 2),
+      headers,
     };
   } catch (err) {
     return {
       statusCode: 500,
       body: JSON.stringify(err, null, 2),
+      headers,
     };
   }
 }

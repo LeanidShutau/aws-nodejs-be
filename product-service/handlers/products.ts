@@ -1,12 +1,42 @@
 export default {
   '5ecff64a-16c4-4f04-a68b-9dbd9f84dd7e': {
-    'id': '5ecff64a-16c4-4f04-a68b-9dbd9f84dd7e',
-    'title': 'Air can 1',
-    'price': 25
+    id: '5ecff64a-16c4-4f04-a68b-9dbd9f84dd7e',
+    title: 'Canned air from Paris',
+    description: 'Canned air from Paris',
+    price: 14,
+    count: 10,
+    image: 'https://i.etsystatic.com/6020270/r/il/48e8c7/2400885419/il_794xN.2400885419_jsos.jpg',
   },
   'e71a9424-2a97-47f5-8a16-ee965ca41ca1': {
-    'id': 'e71a9424-2a97-47f5-8a16-ee965ca41ca1',
-    'title': 'Air can 2',
-    'price': 40
-  }
+    id: 'e71a9424-2a97-47f5-8a16-ee965ca41ca1',
+    title: 'Canned air from New York City',
+    description: 'Canned air from New York City',
+    price: 20,
+    count: 10,
+    image: 'https://images-na.ssl-images-amazon.com/images/I/51xedEjDK4L._AC_SL1024_.jpg',
+  },
+  'd53e1c0e-96f2-48e0-a23f-5ca65e1817b8': {
+    id: 'd53e1c0e-96f2-48e0-a23f-5ca65e1817b8',
+    title: 'Canned air from Sydney',
+    description: 'Canned air from Sydney',
+    price: 18,
+    count: 10,
+    image: 'https://i.etsystatic.com/6020270/r/il/48d3bf/536492284/il_570xN.536492284_r6dh.jpg',
+  },
+  'eb3ca9fb-09e0-4265-a0b1-f0989dd7cd60': {
+    id: 'eb3ca9fb-09e0-4265-a0b1-f0989dd7cd60',
+    title: 'Canned air from Honolulu',
+    description: 'Canned air from Honolulu',
+    price: 29,
+    count: 10,
+    image: 'https://images-na.ssl-images-amazon.com/images/I/61QoO5ddWlL._AC_SY741_.jpg',
+  },
+  '1e36a0f9-7e37-41f9-9c28-a2d6990ae09e': {
+    id: '1e36a0f9-7e37-41f9-9c28-a2d6990ae09e',
+    title: 'Canned air from Singapore',
+    description: 'Canned air from Singapore',
+    price: 33,
+    count: 10,
+    image: 'https://i.etsystatic.com/6020270/r/il/577b1d/334450474/il_300x300.334450474.jpg',
+  },
 };
