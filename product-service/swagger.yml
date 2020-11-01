@@ -60,7 +60,16 @@ definitions:
         example: "5ecff64a-16c4-4f04-a68b-9dbd9f84dd7e"
       title:
         type: string
-        example: "Air from Paris"
+        example: "Canned air from Paris"
+      description:
+        type: string
+        example: "Canned air from Paris"
       price:
         type: number
-        example: 25
+        example: 14
+      count:
+        type: number
+        example: 10
+      image:
+        type: string
+        example: 'https://i.etsystatic.com/6020270/r/il/48e8c7/2400885419/il_794xN.2400885419_jsos.jpg'
