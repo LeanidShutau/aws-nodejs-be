@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Object {
+  "body": "{
+  \\"products\\": [
+    {
+      \\"id\\": \\"5ecff64a-16c4-4f04-a68b-9dbd9f84dd7e\\",
+      \\"title\\": \\"Air can 1\\",
+      \\"price\\": 25
+    },
+    {
+      \\"id\\": \\"e71a9424-2a97-47f5-8a16-ee965ca41ca1\\",
+      \\"title\\": \\"Air can 2\\",
+      \\"price\\": 40
+    }
+  ]
+}",
+  "statusCode": 200,
+}
+`;

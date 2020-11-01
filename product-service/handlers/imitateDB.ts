@@ -1,4 +1,4 @@
-import productsMap from './products.json';
+import productsMap from './products';
 
 export interface ProductEntity {
     id: string,

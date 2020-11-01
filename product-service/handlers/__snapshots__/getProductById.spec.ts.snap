@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should reject with 404 error 1`] = `
+Object {
+  "body": "{
+  \\"message\\": \\"Not Found\\"
+}",
+  "statusCode": 404,
+}
+`;
+
+exports[`should response with a product 1`] = `
+Object {
+  "body": "{
+  \\"product\\": {
+    \\"id\\": \\"5ecff64a-16c4-4f04-a68b-9dbd9f84dd7e\\",
+    \\"title\\": \\"Air can 1\\",
+    \\"price\\": 25
+  }
+}",
+  "statusCode": 200,
+}
+`;

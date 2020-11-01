@@ -1,0 +1,66 @@
+swagger: "2.0"
+info:
+  description: "Specification for BE API"
+  version: "1.0.0"
+  title: "Products service"
+host: "g5sd3df7lf.execute-api.eu-west-1.amazonaws.com"
+basePath: "/dev"
+tags:
+- name: "product"
+  description: "Products services"
+paths:
+  /products:
+    get:
+      tags:
+      - product
+      summary: "Get products list"
+      operationId: "getProductsList"
+      responses:
+        "200":
+          description: List of products
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Product"
+  /products/{productId}:
+    get:
+      tags:
+      - product
+      summary: "Get product by ID"
+      operationId: "getProductById"
+      parameters:
+      - name: productId
+        in: "path"
+        description: "ID of product to return"
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Product
+          schema:
+            type: object
+            properties:
+              product:
+                $ref: "#/definitions/Product"
+        "404":
+          description: Not found
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example:
+                  Not Found
+definitions:
+  Product:
+    type: object
+    properties:
+      id:
+        type: string
+        example: "5ecff64a-16c4-4f04-a68b-9dbd9f84dd7e"
+      title:
+        type: string
+        example: "Air from Paris"
+      price:
+        type: number
+        example: 25
