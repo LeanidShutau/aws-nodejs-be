@@ -1,7 +1,7 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
 
-import { findById } from './imitateDB';
+import { findById } from './products-db';
 
 export const get: APIGatewayProxyHandler = async (event, _context) => {
   const headers = {
