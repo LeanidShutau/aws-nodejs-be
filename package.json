@@ -1,0 +1,22 @@
+{
+  "name": "aws-nodejs-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "cd product-service && sls deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeanidShutau/aws-nodejs-be.git"
+  },
+  "author": "Leanid Shutau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeanidShutau/aws-nodejs-be/issues"
+  },
+  "homepage": "https://github.com/LeanidShutau/aws-nodejs-be#readme",
+  "dependencies": {
+    "serverless": "^2.9.0"
+  }
+}

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should reject with 404 error 1`] = `
+Object {
+  "body": "{
+  \\"message\\": \\"Not Found\\"
+}",
+  "statusCode": 404,
+}
+`;
+
+exports[`should response with a product 1`] = `
+Object {
+  "body": "{
+  \\"product\\": {
+    \\"id\\": \\"5ecff64a-16c4-4f04-a68b-9dbd9f84dd7e\\",
+    \\"title\\": \\"Canned air from Paris\\",
+    \\"description\\": \\"Canned air from Paris\\",
+    \\"price\\": 14,
+    \\"count\\": 10,
+    \\"image\\": \\"https://i.etsystatic.com/6020270/r/il/48e8c7/2400885419/il_794xN.2400885419_jsos.jpg\\"
+  }
+}",
+  "statusCode": 200,
+}
+`;
