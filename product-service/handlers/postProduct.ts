@@ -9,14 +9,16 @@ function validateProduct(product: ProductEntity) {
     (!product.price || typeof product.price === 'number');
 }
 
+const headers = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+  'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PATCH, PUT',
+};
+
 export const postProduct: APIGatewayProxyHandler = async (event, _context) => {
-  const headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PATCH, PUT',
-  };
   try {
+    console.log(event.body);
     const product = JSON.parse(event.body || '');
     if (!product || !(product instanceof Object) || !validateProduct(product)) {
       return {
