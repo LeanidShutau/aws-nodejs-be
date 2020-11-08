@@ -85,12 +85,12 @@ export async function createProduct(product: Partial<ProductEntity>): Promise<{
     } = product || {};
     const createProductResponse = await client.query<ProductEntity>(`
       insert into public.products (title, description, price)
-      values($1, $2, $3) returning *`, [title, description, price]);
+      values($1, $2, $3) returning *`, [title, description, Number(price)]);
     const [createdProduct] = createProductResponse.rows;
 
     const createStockResponse = await client.query<StockEntity>(`
       insert into public.stocks (product_id, count)
-      values($1, $2) returning count`, [createdProduct.id, count]);
+      values($1, $2) returning count`, [createdProduct.id, Number(count)]);
     const [createdStock] = createStockResponse.rows;
     createdProduct.count = createdStock.count;
     await client.query('COMMIT');

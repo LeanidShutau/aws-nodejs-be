@@ -65,6 +65,7 @@ const serverlessConfiguration: Serverless = {
           http: {
             method: 'post',
             path: 'products',
+            cors: true,
           },
         },
       ],

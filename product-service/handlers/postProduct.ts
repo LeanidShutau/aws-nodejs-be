@@ -6,8 +6,7 @@ import { createProduct, ProductEntity } from './products-db';
 function validateProduct(product: ProductEntity) {
   return (typeof product.title === 'string' && product.title.length > 0) &&
     (!product.description || typeof product.description === 'string') &&
-    (!product.price || typeof product.price === 'number') &&
-    (!product.count || typeof product.count === 'number');
+    (!product.price || typeof product.price === 'number');
 }
 
 export const postProduct: APIGatewayProxyHandler = async (event, _context) => {
@@ -39,7 +38,7 @@ export const postProduct: APIGatewayProxyHandler = async (event, _context) => {
   } catch (err) {
     return {
       statusCode: 500,
-      body: JSON.stringify(err.details || err.message || err, null, 2),
+      body: JSON.stringify(err.message || err.details || err, null, 2),
       headers,
     };
   }
