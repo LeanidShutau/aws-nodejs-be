@@ -21,6 +21,11 @@ export interface ProductEntity {
   count: number,
 }
 
+export interface StockEntity {
+  product_id: string,
+  count: number,
+}
+
 export async function findAll(): Promise<ProductEntity[]> {
   const client = new Client(dbOptions);
   await client.connect();
@@ -57,6 +62,38 @@ export async function findById(productId: string): Promise<ProductEntity> {
       where PR.id = $1`, [productId]);
     const [product] = queryResponse.rows;
     return product;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  } finally {
+    client.end();
+  }
+}
+
+export async function createProduct(product: Partial<ProductEntity>): Promise<{
+  id: string,
+}> {
+  const client = new Client(dbOptions);
+  await client.connect();
+  try {
+    const {
+      title,
+      description,
+      price,
+      count = 0,
+    } = product || {};
+    const createProductResponse = await client.query<ProductEntity>(`
+      insert into public.products (title, description, price)
+      values($1, $2, $3) returning *`, [title, description, price]);
+    const [createdProduct] = createProductResponse.rows;
+
+    const createStockResponse = await client.query<StockEntity>(`
+      insert into public.stocks (product_id, count)
+      values($1, $2) returning count`, [createdProduct.id, count]);
+    const [createdStock] = createStockResponse.rows;
+
+    createdProduct.count = createdStock.count;
+    return createdProduct;
   } catch (err) {
     console.error(err);
     throw err;
