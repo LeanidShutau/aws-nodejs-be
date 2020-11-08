@@ -76,6 +76,7 @@ export async function createProduct(product: Partial<ProductEntity>): Promise<{
   const client = new Client(dbOptions);
   await client.connect();
   try {
+    await client.query('BEGIN');
     const {
       title,
       description,
@@ -91,10 +92,11 @@ export async function createProduct(product: Partial<ProductEntity>): Promise<{
       insert into public.stocks (product_id, count)
       values($1, $2) returning count`, [createdProduct.id, count]);
     const [createdStock] = createStockResponse.rows;
-
     createdProduct.count = createdStock.count;
+    await client.query('COMMIT');
     return createdProduct;
   } catch (err) {
+    await client.query('ROLLBACK');
     console.error(err);
     throw err;
   } finally {
