@@ -1,16 +1,18 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
 
-import { findById } from './imitateDB';
+import { findById } from './products-db';
 
-export const get: APIGatewayProxyHandler = async (event, _context) => {
-  const headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PATCH, PUT',
-  }
+const headers = {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+  'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PATCH, PUT',
+};
+
+export const getProductById: APIGatewayProxyHandler = async (event, _context) => {
   try {
+    console.log('pathParameters: ', event.pathParameters);
     const { productId } = event.pathParameters || {};
     const product = await findById(productId);
     if (!product) {
