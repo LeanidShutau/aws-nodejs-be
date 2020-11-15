@@ -1,5 +1,5 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
-import { get as getProductById } from './getProductById';
+import { getProductById } from './getProductById';
 
 it('should response with a product', async () => {
   const result = await getProductById({

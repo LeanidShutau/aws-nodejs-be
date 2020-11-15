@@ -1,4 +1,4 @@
-import { get as getProductsList } from './getProductsList';
+import { getProductsList } from './getProductsList';
 
 it('renders correctly', async () => {
   const result = await getProductsList(null, null, null);
