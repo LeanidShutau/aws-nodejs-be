@@ -21,6 +21,13 @@ const serverlessConfiguration: Serverless = {
     runtime: 'nodejs12.x',
     region: 'eu-west-1',
     stage: 'dev',
+    iamRoleStatements: [
+      {
+        Effect: 'Allow',
+        Action: 's3:*',
+        Resource: 'arn:aws:s3:::lshutau-rs-uploaded/*',
+      },
+    ],
     apiGateway: {
       minimumCompressionSize: 1024,
     },
@@ -29,18 +36,43 @@ const serverlessConfiguration: Serverless = {
     },
   },
   functions: {
-    hello: {
-      handler: 'handler.hello',
+    importProductsFile: {
+      handler: 'handler.importProductsFile',
       events: [
         {
           http: {
             method: 'get',
-            path: 'hello',
-          }
-        }
-      ]
+            path: 'import',
+            request: {
+              parameters: {
+                querystrings: {
+                  name: true,
+                },
+              },
+            },
+          },
+        },
+      ],
+    },
+    importFileParser: {
+      handler: 'handler.importFileParser',
+      events: [
+        {
+          s3: {
+            bucket: 'lshutau-rs-uploaded',
+            event: 's3:ObjectCreated:*',
+            rules: [
+              {
+                prefix: 'uploaded/',
+                suffix: '',
+              },
+            ],
+            existing: true,
+          },
+        },
+      ],
     }
-  }
-}
+  },
+};
 
 module.exports = serverlessConfiguration;
