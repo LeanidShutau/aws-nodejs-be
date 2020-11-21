@@ -22,6 +22,33 @@ paths:
             type: array
             items:
               $ref: "#/definitions/Product"
+    post:
+      tags:
+      - product
+      summary: "Create new product"
+      operationId: "postProduct"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title:
+                type: string
+                example: 'Product Title'
+              description:
+                type: string
+                example: 'Product description'
+              count:
+                type: number
+                example: 5
+              price:
+                type: number
+                example: 10
+      responses:
+        "200":
+          description: New product
+          schema:
+            $ref: "#/definitions/Product"
+
   /products/{productId}:
     get:
       tags:
