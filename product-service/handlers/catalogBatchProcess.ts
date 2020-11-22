@@ -1,5 +1,5 @@
 import { SQSHandler } from 'aws-lambda';
-import AWS from 'aws-sdk';
+import * as AWS from 'aws-sdk';
 import 'source-map-support/register';
 
 import { createProduct, validateProduct } from './products-db';
