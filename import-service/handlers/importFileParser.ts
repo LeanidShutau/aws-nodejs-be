@@ -15,10 +15,18 @@ export const importFileParser: S3Handler = async (event, _context) => {
         Key: record.s3.object.key,
       }).createReadStream();
 
+      const sqs = new AWS.SQS();
+
       await new Promise((resolve, reject) => {
         s3Stream.pipe(csv())
-          .on('data', data => {
-            console.log(data);
+          .on('data', async (data) => {
+            await sqs.sendMessage({
+              QueueUrl: process.env.SQS_URL,
+              MessageBody: JSON.stringify(data),
+            }).promise();
+          })
+          .on('error', error => {
+            reject(error);
           })
           .on('end', async () => {
             try {

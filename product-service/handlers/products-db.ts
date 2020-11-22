@@ -47,6 +47,11 @@ export async function findAll(): Promise<ProductEntity[]> {
   }
 }
 
+export function validateProduct(product: any): product is ProductEntity {
+  return (typeof product.title === 'string' && product.title.length > 0) &&
+    (!product.description || typeof product.description === 'string');
+}
+
 export async function findById(productId: string): Promise<ProductEntity> {
   const client = new Client(dbOptions);
   await client.connect();
