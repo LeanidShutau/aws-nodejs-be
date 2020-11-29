@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create products 1`] = `
+Array [
+  Array [
+    Object {
+      "count": 2,
+      "description": "Description",
+      "price": 20,
+      "title": "Test 1",
+    },
+  ],
+  Array [
+    Object {
+      "count": 3,
+      "description": "Description",
+      "price": 10,
+      "title": "Test 2",
+    },
+  ],
+]
+`;

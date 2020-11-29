@@ -1,13 +1,7 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
 
-import { createProduct, ProductEntity } from './products-db';
-
-function validateProduct(product: ProductEntity) {
-  return (typeof product.title === 'string' && product.title.length > 0) &&
-    (!product.description || typeof product.description === 'string') &&
-    (!product.price || typeof product.price === 'number');
-}
+import { createProduct, validateProduct } from './products-db';
 
 const headers = {
   'Content-Type': 'application/json',
