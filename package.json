@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "deploy:authorization": "cd authorization-service && sls deploy",
     "deploy:product": "cd product-service && sls deploy",
     "deploy:import": "cd import-service && sls deploy",
-    "deploy": "npm run deploy:product && npm run deploy:import"
+    "deploy": "npm run deploy:authorization && npm run deploy:product && npm run deploy:import"
   },
   "repository": {
     "type": "git",
